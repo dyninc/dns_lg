@@ -1,0 +1,11 @@
+[program:<%= appname %>]
+command=<%= uwsgi_path %>/uwsgi --master --processes 4 --pp <%= approot %> --socket /tmp/<%= appname%>-uwsgi.sock -w <%=appfile%>:app
+directory=<%= approot %>
+user=<%=nginxuser%>
+group=<%=nginxuser%>
+autostart=true
+autorestart=true
+stdout_logfile=/var/log/uwsgi.log
+redirect_stderr=true
+stopsignal=INT
+
